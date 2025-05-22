@@ -64,111 +64,94 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col" style={{fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontStyle: "normal"}}>
       <header className='flex justify-center items-center'>
         <img className="logo" src="./Fuwagi-Logo.png" alt="Fuwagi Logo" />
-        <h1 className="fuwagi-header-text">Fuwagi</h1>
+        <h1 className="text-5xl ">Fuwagi</h1>
       </header>
-      <div
-        className="carousel mb-8"
-        id="carousel"
-        style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        {carouselItems.map((item, idx) => (
-          <div
-            className={`carousel-item${idx === currentIndex ? " active" : ""}`}
-            key={idx}
-            style={{ display: idx === currentIndex ? "block" : "none" }}
-          >
-
+      <div className="flex-1 flex flex-col items-center">
+        <div
+          className="carousel mb-8"
+          id="carousel"
+          style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {carouselItems.map((item, idx) => (
+            <div
+              className={`carousel-item${idx === currentIndex ? " active" : ""}`}
+              key={idx}
+              style={{ display: idx === currentIndex ? "block" : "none" }}
+            >
               <div
-                style={{
-                  borderRadius: "0.5rem",
-                }}
+                style={{ borderRadius: "0.5rem" }}
                 className="flex items-center justify-center m-auto"
               >
                 <img src={item.imgSrc} alt="icon" style={{ width: "100%", height: "100%" }} />
               </div>
             </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {/* <!-- Carousel Dots --> */}
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
-        {carouselItems.map((_, idx) => (
-          <div
-            key={idx}
-            className={`carousel-dot${idx === currentIndex ? " active" : ""}`}
-            onClick={() => goToSlide(idx)}
-            style={{
-              width: "1rem",
-              height: "1rem",
-              borderRadius: "50%",
-              background: idx === currentIndex ? "#062261" : "#ccc",
-              margin: "0 0.5rem",
-              cursor: "hand"
-            }}
-          ></div>
-        ))}
-      </div>
+        {/* Carousel Dots */}
+        <div className="flex justify-center mb-8">
+          {carouselItems.map((_, idx) => (
+            <div
+              key={idx}
+              className={`carousel-dot${idx === currentIndex ? " active" : ""}`}
+              onClick={() => goToSlide(idx)}
+              style={{
+                width: "1rem",
+                height: "1rem",
+                borderRadius: "50%",
+                background: idx === currentIndex ? "#062261" : "#ccc",
+                margin: "0 0.5rem",
+                cursor: "pointer"
+              }}
+            ></div>
+          ))}
+        </div>
 
-      {/* <!-- Discover text --> */}
-      <h2
-        style={{
-          fontSize: "1.5rem",
-          marginBottom: "1.5rem",
-          color: "#062261",
-          fontFamily: "'Playfair Display', serif"
-        }}
-      >
-        Discover your perfect mystery box
-      </h2>
-
-      {/* <!-- Enhanced Button --> */}
-      <button
-        className="enhanced-button"
-        onClick={() => navigate("/quiz")}
-        style={{
-          backgroundColor: "#062261",
-          color: "#F4E7DF",
-          fontSize: "1.5rem",
-          padding: "1.5rem 4rem",
-          borderRadius: "9999px",
-          fontFamily: "'Playfair Display', serif",
-          letterSpacing: "0.05em",
-          transition: "all 0.3s ease",
-        }}
-      >
-        Take Quiz
-      </button>
-
-      <footer className='bottom-0 left-0 w-full bg-gray-800 text-white py-4 text-center'
-        style={{
-          backgroundColor: "#062261",
-          color: "#F4E7DF",
-          padding: "2.5rem 1rem",
-          marginTop: "3rem",
-          width: "100%",
-        }}
-      >
-        <div
+        {/* Discover text */}
+        <h2
           style={{
-            maxWidth: "100%",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
+            fontSize: "1.5rem",
+            marginBottom: "1.5rem",
+            color: "#062261",
+            // fontFamily: "'Playfair Display', serif"
           }}
         >
-          <div style={{ marginBottom: "1rem" }}>
+          Discover your perfect mystery box
+        </h2>
+
+        {/* Enhanced Button */}
+        <button
+          className="enhanced-button"
+          onClick={() => navigate("/quiz")}
+          style={{
+            backgroundColor: "#062261",
+            color: "#F4E7DF",
+            fontSize: "1.5rem",
+            padding: "1.5rem 4rem",
+            borderRadius: "9999px",
+            // fontFamily: "'Playfair Display', serif",
+            letterSpacing: "0.05em",
+            transition: "all 0.3s ease",
+          }}
+        >
+          Take Quiz
+        </button>
+      </div>
+
+      <footer className="bg-[#062261] text-[#F4E7DF] py-10 px-4 mt-12 w-full text-center">
+        <div className="max-w-full mx-auto flex flex-col items-center">
+          <div className="mb-4">
             <a
               href="https://www.instagram.com/fuwagibox/"
-              style={{ display: "inline-block", transition: "opacity 0.3s ease" }}
+              className="inline-block transition-opacity duration-300 hover:opacity-80"
             >
               <svg
-                style={{ width: "2rem", height: "2rem" }}
+                className="w-8 h-8"
                 fill="#F4E7DF"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
@@ -178,16 +161,10 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <p
-          style={{
-            fontSize: "0.875rem",
-            opacity: 0.8,
-            fontFamily: "'Cormorant Garamond', serif"
-          }}
-        >
+        <p className="text-sm opacity-80 font-serif">
           © {new Date().getFullYear()} Fuwagi. All rights reserved.
         </p>
       </footer>
-    </>
+    </div>
   );
 }

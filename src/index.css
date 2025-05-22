@@ -1,7 +1,7 @@
-/* @import "tailwindcss"; */
-@tailwind base;
+@import "tailwindcss";
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 
 body {
@@ -10,9 +10,9 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, .btn-text {
+/* h1, h2, .btn-text {
   font-family: 'Playfair Display', serif;
-}
+} */
 
 .enhanced-button {
   animation: pulse 2s infinite;

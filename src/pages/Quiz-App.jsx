@@ -90,7 +90,7 @@ export default function QuizApp() {
                   key={oIdx}
                   onClick={() => handleOptionSelect(opt.value)}
                   className="flex w-full text-9xl py-4 px-4 rounded text-white text-base font-medium"
-                  style={{ backgroundColor: "#D4E7DF" }}
+                  style={{ backgroundColor: "#062261" }}
                 >
                   {opt.label}
                 </button>
@@ -113,7 +113,7 @@ export default function QuizApp() {
               setCurrent(0);
             }}
             className="mt-6 px-6 py-2 rounded text-white"
-            style={{ backgroundColor: "red" }}
+            style={{ backgroundColor: "#062261" }}
           >
             Retake Quiz
           </button>
