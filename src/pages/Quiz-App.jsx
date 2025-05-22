@@ -22,9 +22,8 @@ const options = [
   { label: "D) Nearly every day", value: 3 }
 ];
 
-function ProgressBar({ current, total }) {
-  const progress = ((current ) / total) * 100;
-
+function ProgressBar({ current, total, isFull }) {
+  const progress = isFull ? 100 : ((current) / total) * 100;
   return (
     <div
       style={{
@@ -79,9 +78,9 @@ export default function QuizApp() {
 
   return (
     <div className="flex justify-center min-h-screen p-6 flex flex-col items-center" style={{ backgroundColor: "#F4E7DF", color: "#062261" }}>
-      {!submitted ? (
-        <div className="w-full max-w-xl">
-          <ProgressBar current={current} total={questions.length} />
+      <div className="w-full max-w-xl">
+        <ProgressBar current={current} total={questions.length} isFull={submitted} />
+        {!submitted ? (
           <div className="bg-white p-6 rounded shadow text-center">
             <p className="text-xl font-semibold mb-6">{current + 1}. {questions[current]}</p>
             <div className="grid grid-cols-2 gap-4">
@@ -97,28 +96,28 @@ export default function QuizApp() {
               ))}
             </div>
           </div>
-        </div>
-      ) : (
-        <div className="bg-white p-6 rounded shadow text-center max-w-xl w-full">
-          <h2 className="text-2xl font-bold mb-4">Your Results</h2>
-          <ul className="space-y-2">
-            {scores.map((s, i) => (
-              <li key={i} className="text-lg">{i + 1}. {s.label}: {s.score} points</li>
-            ))}
-          </ul>
-          <button
-            onClick={() => {
-              setSubmitted(false);
-              setAnswers(Array(12).fill(null));
-              setCurrent(0);
-            }}
-            className="mt-6 px-6 py-2 rounded text-white"
-            style={{ backgroundColor: "#062261" }}
-          >
-            Retake Quiz
-          </button>
-        </div>
-      )}
+        ) : (
+          <div className="bg-white p-6 rounded shadow text-center max-w-xl w-full">
+            <h2 className="text-2xl font-bold mb-4">Your Results</h2>
+            <ul className="space-y-2">
+              {scores.map((s, i) => (
+                <li key={i} className="text-lg">{i + 1}. {s.label}: {s.score} points</li>
+              ))}
+            </ul>
+            <button
+              onClick={() => {
+                setSubmitted(false);
+                setAnswers(Array(12).fill(null));
+                setCurrent(0);
+              }}
+              className="mt-6 px-6 py-2 rounded text-white"
+              style={{ backgroundColor: "#062261" }}
+            >
+              Retake Quiz
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
