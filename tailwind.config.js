@@ -1,3 +1,5 @@
+const { default: tailwindcss } = require("@tailwindcss/vite");
+
 // tailwind.config.js
 module.exports = {
   content: [
@@ -8,5 +10,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [tailwindcss(),],
 }
