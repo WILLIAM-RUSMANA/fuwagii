@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-//Test
-
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
@@ -66,10 +64,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col" style={{fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontStyle: "normal"}}>
+    <div className="min-h-screen flex flex-col">
       <header className='flex justify-center items-center'>
         <img className="logo" src="./Fuwagi-Logo.png" alt="Fuwagi Logo" />
-        <h1 className="text-5xl ">Fuwagi</h1>
+        <h1 className="text-9xl fuwagi-font">Fuwagi</h1>
       </header>
       <div className="flex-1 flex flex-col items-center">
         <div
@@ -115,13 +113,13 @@ export default function Home() {
         </div>
 
         {/* Discover text */}
-        <h2
-          style={{
-            fontSize: "1.5rem",
-            marginBottom: "1.5rem",
-            color: "#062261",
-            // fontFamily: "'Playfair Display', serif"
-          }}
+        <h2 className="fuwagi-font text-3xl mb-3 text-[#062261]"
+          // style={{
+          //   fontSize: "1.5rem",
+          //   marginBottom: "1.5rem",
+          //   color: "#062261",
+          //   // fontFamily: "'Playfair Display', serif"
+          // }}
         >
           Discover your perfect mystery box
         </h2>
@@ -163,7 +161,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <p className="text-sm opacity-80 font-serif">
+        <p className="text-sm opacity-80">
           © {new Date().getFullYear()} Fuwagi. All rights reserved.
         </p>
       </footer>

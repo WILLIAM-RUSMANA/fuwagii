@@ -15,6 +15,8 @@ const questions = [
   "I’ve felt supported and connected by friends or family."
 ];
 
+let highest = 0;
+
 const options = [
   { label: "A) Not at all", value: 0 },
   { label: "B) Several days", value: 1 },
@@ -82,13 +84,13 @@ export default function QuizApp() {
         <ProgressBar current={current} total={questions.length} isFull={submitted} />
         {!submitted ? (
           <div className="bg-white p-6 rounded shadow text-center">
-            <p className="text-xl font-semibold mb-6">{current + 1}. {questions[current]}</p>
+            <p className="text-2xl font-medium mb-6">{current + 1}. {questions[current]}</p>
             <div className="grid grid-cols-2 gap-4">
               {options.map((opt, oIdx) => (
                 <button
                   key={oIdx}
                   onClick={() => handleOptionSelect(opt.value)}
-                  className="flex w-full text-9xl py-4 px-4 rounded text-white text-base font-medium"
+                  className="flex w-full text-9xl py-4 px-4 rounded text-white text-base font-normal"
                   style={{ backgroundColor: "#062261" }}
                 >
                   {opt.label}
@@ -100,9 +102,22 @@ export default function QuizApp() {
           <div className="bg-white p-6 rounded shadow text-center max-w-xl w-full">
             <h2 className="text-2xl font-bold mb-4">Your Results</h2>
             <ul className="space-y-2">
-              {scores.map((s, i) => (
-                <li key={i} className="text-lg">{i + 1}. {s.label}: {s.score} points</li>
-              ))}
+              {scores.map((s, i) => {
+                const highestScore = scores[0].score;
+                const numHighest = scores.filter(sc => sc.score === highestScore).length;
+                const allTied = scores.every(sc => sc.score === highestScore);
+                const allZero = scores.every(sc => sc.score === 0);
+                // Only highlight if not all zero
+                const highlight = !allZero && (allTied || (s.score === highestScore && numHighest > 1) || (s.score === highestScore && i === 0));
+                return (
+                  <li
+                    key={i}
+                    className={`score-list text-lg font-normal ${highlight ? 'bg-green-200 text-green-900 font-bold rounded' : ''}`}
+                  >
+                    {i + 1}. {s.label}: {s.score} points
+                  </li>
+                );
+              })}
             </ul>
             <button
               onClick={() => {
