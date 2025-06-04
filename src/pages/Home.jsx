@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
+//Test
+
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
