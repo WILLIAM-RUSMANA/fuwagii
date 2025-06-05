@@ -38,7 +38,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .logo {
-    width: 900%;
+    /* width: 900%; */
     animation: none;
   }
 }
@@ -51,9 +51,9 @@ body {
   color: #888;
 }
 
-.logo {
+/* .logo {
   width:10%;
-}
+} */
 
 .fuwagi-header-text {
   color: #062261;

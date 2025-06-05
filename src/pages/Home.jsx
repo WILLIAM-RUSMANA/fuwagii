@@ -65,9 +65,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className='flex justify-center items-center'>
-        <img className="logo" src="./Fuwagi-Logo.png" alt="Fuwagi Logo" />
-        <h1 className="text-9xl fuwagi-font">Fuwagi</h1>
+      <header className='flex justify-center items-center mb-5'>
+        <img className="w-24 lg:w-32 logo" src="./Fuwagi-Logo.png" alt="Fuwagi Logo" />
+        <h1 className="text-7xl fuwagi-font">Fuwagi</h1>
       </header>
       <div className="flex-1 flex flex-col items-center">
         <div
