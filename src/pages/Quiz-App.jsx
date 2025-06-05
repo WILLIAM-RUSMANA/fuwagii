@@ -70,9 +70,9 @@ export default function QuizApp() {
     const sleep = answers.slice(4, 8).reduce((a, b) => a + b, 0);
     const health = answers.slice(8, 12).reduce((a, b) => a + b, 0);
     return [
-      { label: "Depression & Anxiety", score: depression },
-      { label: "Sleep Deprivation", score: sleep },
-      { label: "Healthy Mind", score: health }
+      { label: "Self-care box", score: depression },
+      { label: "Sleep box", score: sleep },
+      { label: "Health box", score: health }
     ].sort((a, b) => b.score - a.score);
   };
 
